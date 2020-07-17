@@ -25,7 +25,7 @@ Run the node and view logs: `node index.js | npx bunyan -o short`
 
 Run the node as a background service:
 
-Register name `pm2 start --name Fnt-backend-lisk index.js`
+Register name `pm2 start --name Fnt-backend-lisk node/index.js`
 
 To start and stop the process:
 
