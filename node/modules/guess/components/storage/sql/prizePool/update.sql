@@ -1,0 +1,1 @@
+UPDATE prize_pool SET ${updateSet:raw} ${parsedFilters:raw};

@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM user_record ${parsedFilters:raw}

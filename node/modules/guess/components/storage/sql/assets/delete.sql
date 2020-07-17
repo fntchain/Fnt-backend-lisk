@@ -1,0 +1,1 @@
+DELETE FROM assets ${parsedFilters:raw}

@@ -1,0 +1,1 @@
+UPDATE user_record SET ${updateSet:raw} ${parsedFilters:raw};

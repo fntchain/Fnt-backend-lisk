@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT address) FROM user_record ${parsedFilters:raw}
