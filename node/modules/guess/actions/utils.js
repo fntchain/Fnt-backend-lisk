@@ -30,12 +30,13 @@ function doFaucteTransaction (amount, username, address) {
     return api.transactions.broadcast(faucteTransaction.toJSON())
 }
 
-async function doTransferTransaction (amount, address, passphrase) {
+async function doTransferTransaction (amount, address, passphrase,asset) {
     amount = new BigNum(amount).times(10 ** 8).toString()
     const transferTransaction = new transferBetTransaction({
         asset: {
             amount,
             recipientId: address,
+            ...asset
         },
         networkIdentifier: networkIdentifier,
         timestamp: utils.getTimeFromBlockchainEpoch(new Date()),

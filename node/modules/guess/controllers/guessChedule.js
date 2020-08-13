@@ -59,7 +59,8 @@ class GuessSchedule {
                             let balance = prizePool.pool * (awards.percentage / 100) * (record.amount / awards.total)
                             balance = Math.floor(balance)
                             setTimeout(async () => {
-                                await doTransferTransaction(balance, record.address, admin.passphrase)
+                                let asset = {period:record.period,guess_project:assets.assets_name,draw_price:priceUsd}
+                                await doTransferTransaction(balance, record.address, admin.passphrase,asset)
                                 this.socket.emit(`awards_${record.address}`, { balance })
                             }, q * 1000)
                             q++;

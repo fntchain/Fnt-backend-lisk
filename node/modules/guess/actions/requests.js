@@ -122,7 +122,9 @@ module.exports = ({ components }, socket, io) => {
     })
     socket.on('saveRecord', async (record) => {
         try {
-            await doTransferTransaction(record.amount, admin.address, record.passphrase)
+            let project = await components.storage.entities.Assets.getOne({ id:record.id });
+            let asset = {period:record.period,guess_project:project.assets_name,guess_price:record.price};
+            await doTransferTransaction(record.amount, admin.address, record.passphrase,asset);
             let params = { period: record.period, assets_id: record.id, guess_price: record.price, amount: record.amount, guess_time: moment().unix(), address: record.address, state: 0 }
             await components.storage.entities.UserRecord.create(params)
             let pool = await components.storage.entities.PrizePool.getOne({ period: record.period, assets_id: record.id })
